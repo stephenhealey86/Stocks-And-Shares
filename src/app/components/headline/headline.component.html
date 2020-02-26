@@ -1,0 +1,19 @@
+<article *ngIf="headline.summary.length > 50 && headline.image.length > 0 && viewType" class="card m-3" style="width: 30rem; max-height: 40rem;">
+  <img src={{headline.image}} class="card-img-top" alt={{headline.headline}}>
+  <div class="card-body">
+    <h5 class="card-title">{{headline.headline}}</h5>
+    <p class="card-text">{{headline.summary.length < 300 ? headline.summary : (headline.summary | slice:0:297) + '...'}}</p>
+    <a href={{headline.url}} target="_blank" class="btn btn-primary">Read more</a>
+  </div>
+</article>
+
+<article *ngIf="headline.summary.length > 50 && headline.image.length > 0 && !viewType" class="card m-3 d-flex flex-row">
+  <span class="m-1 d-flex flex-column justify-content-around">
+    <img src={{headline.image}} class="card-img-top m-1" alt={{headline.headline}} style="width: 10rem; max-height: 10rem;">
+    <a href={{headline.url}} target="_blank" class="m-1 btn btn-primary">Read more</a>
+  </span>
+  <div class="card-body d-flex flex-column flex-grow-1">
+    <h5 class="card-title">{{headline.headline}}</h5>
+    <p class="card-text">{{headline.summary}}</p>
+  </div>
+</article>

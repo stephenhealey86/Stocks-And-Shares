@@ -1,0 +1,12 @@
+<div class="jumbotron m-5">
+  <h1 class="display-4">Stocks & Shares News</h1>
+  <p class="lead">Up to date news in the world of business</p>
+  <hr class="my-4">
+  <p>All articles are provided by 3rd party news outlets.</p>
+  <button (click)="viewType = true" *ngIf="!viewType" class="btn btn-primary">Card View</button>
+  <button (click)="viewType = false" *ngIf="viewType" class="btn btn-primary">List View</button>
+</div>
+
+<div class="d-flex flex-wrap" [ngClass]="{'justify-content-center': viewType, 'flex-column' : !viewType}">
+  <app-headline [viewType]="viewType" [headline]="item" *ngFor="let item of news"></app-headline>
+</div>
