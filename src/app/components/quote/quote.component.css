@@ -2,3 +2,8 @@ hr {
     border: 0.5px solid gray;
     margin: 0 0 1rem 0;
 }
+
+.fa-spinner {
+    font-size: 5rem;
+    animation: spin 3s linear 0s infinite;
+}

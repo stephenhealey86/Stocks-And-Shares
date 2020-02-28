@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { ExchangeModel } from '../models/exchange-model';
 import { SymbolModel } from '../models/symbol-model';
 import { QuoteModel } from '../models/quote-model';
+import { CandleModel } from '../models/candle-model';
+import { CandleResolution } from '../models/candle-resolution.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +32,4 @@ public getSymbol(exchange: ExchangeModel): Observable<Array<SymbolModel>> {
 public getQuote(symbol: SymbolModel): Observable<QuoteModel> {
   return this.http.get<QuoteModel>(this.baseUrl + this.quoteUrl + symbol.symbol + '&token=' + this.token);
 }
-
 }

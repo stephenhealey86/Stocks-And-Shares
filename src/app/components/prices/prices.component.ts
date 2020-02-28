@@ -5,6 +5,7 @@ import { SymbolModel } from 'src/app/models/symbol-model';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { QuoteModel } from 'src/app/models/quote-model';
+import { CandleModel } from 'src/app/models/candle-model';
 
 @Component({
   selector: 'app-prices',

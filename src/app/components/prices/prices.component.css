@@ -1,0 +1,4 @@
+.fa-spinner {
+    font-size: 10rem;
+    animation: spin 3s linear 0s infinite;
+}
