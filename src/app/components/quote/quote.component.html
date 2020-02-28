@@ -1,0 +1,33 @@
+<div id="summary" class="m-5">
+  <div class="d-flex">
+    <h3 class="text-primary mr-4">{{symbol.displaySymbol}}</h3>
+    <h3 class="text-info">{{symbol.description}}</h3>
+  </div>
+  <hr>
+  
+  <h4 class="text-info">Summary</h4>
+
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th>{{'Price (' + exchange.currency + ')'}}</th>
+        <td>{{quote.c}}</td>
+        <th>Change (%)</th>
+        <td [ngClass]="{'text-success': change === 1, 'text-danger': change === 2}">{{percentageChange}}<i class="fas mx-2" *ngIf="change !== 0"
+          [ngClass]="{'fa-caret-up': change === 1, 'fa-caret-down': change === 2}"></i>{{difference}}</td>
+      </tr>
+      <tr>
+        <th>{{'High'}}</th>
+        <td>{{quote.h}}</td>
+        <th>{{'Low'}}</th>
+        <td>{{quote.l}}</td>
+      </tr>
+      <tr>
+        <th>{{'Time'}}</th>
+        <td>{{quote.t * 1000 | date: 'dd-MM-yyyy'}} @ {{quote.t * 100| date: 'hh:mm'}}</td>
+        <th>{{'Last close'}}</th>
+        <td>{{quote.pc}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

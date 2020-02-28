@@ -11,6 +11,8 @@ import { PricesComponent } from './components/prices/prices.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { HeadlineComponent } from './components/headline/headline.component';
 import { FinnhubNewsService } from './services/finnhub-news.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { QuoteComponent } from './components/quote/quote.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { FinnhubNewsService } from './services/finnhub-news.service';
     NewsComponent,
     PricesComponent,
     TipsComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    QuoteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     FinnhubNewsService
