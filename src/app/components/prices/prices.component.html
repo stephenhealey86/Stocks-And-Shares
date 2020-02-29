@@ -20,8 +20,11 @@
         </div>
       </li>
       <span class="form-inline my-2 my-lg-0 dropdown">
-        <input [formControl]="queryField" class="form-control mr-sm-2 dropdown-toggle"
-          type="search" placeholder="Search" aria-label="Search">
+        <span id="search" class="form-control mr-sm-2">
+          <input [formControl]="queryField"
+          type="search" placeholder="Search..." aria-label="Search">
+          <i class="fas fa-search"></i>
+        </span>
         <div style="max-height: 300px; overflow-y: auto;" class="dropdown-menu" [ngClass]="{'show': searchResults.length > 0}">
           <button (click)="getQuote(sym)" *ngFor="let sym of searchResults" class="dropdown-item">{{sym.displaySymbol}} - {{sym.description}}</button>
         </div>
@@ -29,5 +32,13 @@
     </ul>
   </div>
 </nav>
+
+<div *ngIf="symbol === undefined" class="jumbotron m-5">
+  <h1 class="display-4">Stocks & Shares Prices</h1>
+  <p class="lead">Up to date live prices and historic prices, as well as company metrics</p>
+  <hr class="my-4">
+  <p *ngIf="exchange.name === undefined">Please choose a market from the market selection.</p>
+  <p *ngIf="exchange.name !== undefined">Please enter your stock name or symbol into the search bar.</p>
+</div>
 
 <app-quote *ngIf="quote !== undefined" [quote]="quote" [symbol]="symbol" [exchange]="exchange"></app-quote>

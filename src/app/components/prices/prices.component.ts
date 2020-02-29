@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ExchangeModel } from 'src/app/models/exchange-model';
 import { FinnhubPricesService } from 'src/app/services/finnhub-prices.service';
 import { SymbolModel } from 'src/app/models/symbol-model';
@@ -17,7 +17,7 @@ export class PricesComponent implements OnInit {
   exchanges: Array<ExchangeModel>;
   exchange = {} as ExchangeModel;
   symbols = [] as Array<SymbolModel>;
-  queryField: FormControl = new FormControl();
+  queryField: FormControl = new FormControl({value: '', disabled: true});
   searchResults = [] as Array<SymbolModel>;
   topExchanges = [] as Array<ExchangeModel>;
   symbol: SymbolModel;
@@ -85,6 +85,7 @@ export class PricesComponent implements OnInit {
 
   public getSymbols(exchange: ExchangeModel): void {
     this.exchange = exchange;
+    this.queryField.enable();
     this.pricesService.getSymbol(exchange)
       .subscribe((res: Array<SymbolModel>) => {
         this.symbols = res;
