@@ -7,7 +7,7 @@ import { CandleResolution } from 'src/app/models/candle-resolution.enum';
 import { FinnhubQuoteService } from 'src/app/services/finnhub-quote.service';
 import { MetricModel } from 'src/app/models/metric-model';
 import { MetricType } from 'src/app/models/metric-type.enum';
-import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
+import { ChartModel } from 'src/app/models/chart-model';
 
 @Component({
   selector: 'app-quote',
@@ -25,6 +25,7 @@ export class QuoteComponent implements OnInit {
   candleData: CandleModel;
   metric: MetricModel;
   metricsLoading = true;
+  chartData = [] as Array<ChartModel>;
 
   constructor(private quoteService: FinnhubQuoteService) { }
 
@@ -59,6 +60,7 @@ export class QuoteComponent implements OnInit {
     this.quoteService.getCandle(this.symbol, resolution, START_TIMESTAMP)
       .subscribe((res: CandleModel) => {
         this.candleData = res;
+        this.setChartData();
       }, err => {
         console.log(err);
       });
@@ -73,6 +75,17 @@ export class QuoteComponent implements OnInit {
       case CandleResolution.Daily:
         DATE.setFullYear(YEAR - 1);
         return Math.floor(DATE.getTime() / 1000).toString();
+    }
+  }
+
+  private setChartData(): void {
+    for (let i = 0; i < this.candleData.c.length; i++) {
+      const DATE = new Date(this.candleData.t[i] * 1000);
+      this.chartData.push({
+        // date: DATE,
+        date: this.candleData.t[i] * 1000,
+        value: this.candleData.c[i]
+      });
     }
   }
 

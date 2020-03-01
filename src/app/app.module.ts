@@ -15,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { QuoteComponent } from './components/quote/quote.component';
 import { FinnhubPricesService } from './services/finnhub-prices.service';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { FinnhubQuoteService } from './services/finnhub-quote.service';
+import { D3LineChartComponent } from './components/d3-line-chart/d3-line-chart.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     PricesComponent,
     TipsComponent,
     HeadlineComponent,
+    D3LineChartComponent,
     QuoteComponent
   ],
   imports: [
@@ -37,7 +40,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
   providers: [
     FinnhubNewsService,
     FinnhubPricesService,
-    FinnhubNewsService
+    FinnhubQuoteService
   ],
   bootstrap: [AppComponent]
 })

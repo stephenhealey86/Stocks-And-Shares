@@ -24,7 +24,7 @@
       </tr>
       <tr>
         <th>{{'Time'}}</th>
-        <td>{{quote.t * 1000 | date: 'dd-MM-yyyy'}} @ {{quote.t * 100| date: 'hh:mm'}}</td>
+        <td>{{quote.t * 1000 | date: 'dd-MM-yyyy'}} @ {{quote.t * 1000| date: 'hh:mm'}}</td>
         <th>{{'Last close'}}</th>
         <td>{{quote.pc}}</td>
       </tr>
@@ -32,8 +32,13 @@
   </table>
 </div>
 
-<div *ngIf="metric !== undefined" class="d-flex justify-content-around">
-  <div id="metrics">
+<div class="d-flex justify-content-around flex-grow-1 align-items-stretch flex-wrap">
+  <div class="d-flex flex-column" *ngIf="candleData !== undefined">
+    <h4 class="text-info">Chart</h4>
+    <app-d3-line-chart class="flex-grow-1" [data]="chartData"></app-d3-line-chart>
+  </div>
+  <!-- Metrics -->
+  <div *ngIf="metric !== undefined" id="metrics">
     <h4 class="text-info">Metrics</h4>
     <tabset #metricTabs>
       <tab heading="Margin" (selectTab)="getMetrics('margin')">
