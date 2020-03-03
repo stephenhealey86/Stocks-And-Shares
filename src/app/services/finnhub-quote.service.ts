@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { CandleModel } from '../models/candle-model';
 import { MetricType } from '../models/metric-type.enum';
 import { MetricModel } from '../models/metric-model';
+import { TechnicalIndicatorsModel } from '../models/technical-indicators-model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,9 @@ import { MetricModel } from '../models/metric-model';
 export class FinnhubQuoteService {
 
   private baseUrl = environment.url;
-  private candleUrl = 'stock/candle?symbol=';
+  private candleUrl = '/stock/candle?symbol=';
   private metricUrl = '/stock/metric?symbol=';
+  private techUrl = '/scan/technical-indicator?symbol=';
   private token = environment.token;
 
 constructor(private http: HttpClient) { }
@@ -29,6 +31,10 @@ public getCandle(symbol: SymbolModel, res: CandleResolution, startTimestamp: str
 
 public getMetrics(symbol: SymbolModel, metricType: MetricType): Observable<MetricModel> {
   return this.http.get<MetricModel>(this.baseUrl + this.metricUrl + symbol.symbol + '&metric=' + metricType + '&token=' + this.token);
+}
+
+public getTechnical(symbol: SymbolModel): Observable<TechnicalIndicatorsModel> {
+  return this.http.get<TechnicalIndicatorsModel>(this.baseUrl + this.techUrl + symbol.symbol + '&resolution=D&token=' + this.token);
 }
 
 }
