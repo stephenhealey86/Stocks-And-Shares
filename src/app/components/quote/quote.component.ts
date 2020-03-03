@@ -8,6 +8,7 @@ import { FinnhubQuoteService } from 'src/app/services/finnhub-quote.service';
 import { MetricModel } from 'src/app/models/metric-model';
 import { MetricType } from 'src/app/models/metric-type.enum';
 import { ChartModel } from 'src/app/models/chart-model';
+import { TechnicalIndicatorsModel } from 'src/app/models/technical-indicators-model';
 
 @Component({
   selector: 'app-quote',
@@ -24,8 +25,10 @@ export class QuoteComponent implements OnInit {
   change: number;
   candleData: CandleModel;
   metric: MetricModel;
+  technicalIndicators: TechnicalIndicatorsModel;
   metricsLoading = true;
   chartData = [] as Array<ChartModel>;
+  chartYLabel: string;
 
   constructor(private quoteService: FinnhubQuoteService) { }
 
@@ -33,6 +36,7 @@ export class QuoteComponent implements OnInit {
     this.calculateChange();
     this.getCandle(CandleResolution.Daily);
     this.getMetrics(MetricType.margin);
+    this.getTechnicalIndicators();
   }
 
   private calculateChange(): void {
@@ -87,6 +91,7 @@ export class QuoteComponent implements OnInit {
         value: this.candleData.c[i]
       });
     }
+    this.chartYLabel = `Price - ${this.exchange.currency}`;
   }
 
   public getMetrics(metricType: MetricType): void {
@@ -100,4 +105,12 @@ export class QuoteComponent implements OnInit {
       });
   }
 
+  public getTechnicalIndicators(): void {
+    this.quoteService.getTechnical(this.symbol)
+    .subscribe((res: TechnicalIndicatorsModel) => {
+      this.technicalIndicators = res;
+    }, err => {
+      console.log(err);
+    });
+  }
 }
