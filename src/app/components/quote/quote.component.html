@@ -36,13 +36,15 @@
 <div class="d-flex justify-content-around flex-wrap">
   <div class="d-flex flex-column">
   <!-- Chart -->
-    <div *ngIf="candleData !== undefined">
+    <div class="my-3" *ngIf="candleData !== undefined">
       <h4 class="text-info">Chart</h4>
-      <app-d3-line-chart [data]="chartData" [yLabel]="chartYLabel"></app-d3-line-chart>
+      <app-d3-line-chart [data]="lineChartData" [yLabel]="chartYLabel"></app-d3-line-chart>
     </div>
     <!-- Technical Analysis -->
-    <h4 class="text-info">Technical Analysis</h4>
-    <app-d3-pie-chart></app-d3-pie-chart>
+    <div class="my-3" *ngIf="technicalIndicators !== undefined">
+      <h4 class="text-info">Technical Analysis</h4>
+      <app-d3-pie-chart [data]="technicalIndicators"></app-d3-pie-chart>
+    </div>
   </div>
   
   <!-- Metrics -->

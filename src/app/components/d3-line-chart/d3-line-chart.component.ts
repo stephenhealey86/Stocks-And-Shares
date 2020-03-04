@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import * as d3 from 'd3';
-import { ChartModel } from 'src/app/models/chart-model';
+import { LineChartModel } from 'src/app/models/line-chart-model';
 
 @Component({
   selector: 'app-d3-line-chart',
@@ -9,7 +9,7 @@ import { ChartModel } from 'src/app/models/chart-model';
 })
 export class D3LineChartComponent implements OnInit, AfterViewInit {
 
-  @Input() data: Array<ChartModel>;
+  @Input() data: Array<LineChartModel>;
   @Input() Title: string;
   @Input() xLabel: string;
   @Input() yLabel: string;
@@ -32,7 +32,7 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
   private createChart(): void {
 
     const data = this.data;
-    const svg = d3.select('svg');
+    const svg = d3.select('#lineChart');
     const element = svg.node() as SVGAElement;
 
     const width = element.getBoundingClientRect().width;
@@ -54,7 +54,7 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
                     .tickSize(-width + margin.right + margin.left)
                     .tickSizeOuter(0);
 
-    const line = d3.line<ChartModel>()
+    const line = d3.line<LineChartModel>()
                     .x(d => xScale(d.date))
                     .y(d => yScale(d.value));
 
@@ -164,6 +164,7 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
         .attr('y2', 0)
         .attr('x1', 0)
         .attr('x2', 0);
+      toolTip.attr('visibility', 'collapse');
     });
   }
 

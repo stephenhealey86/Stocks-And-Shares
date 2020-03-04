@@ -1,7 +1,7 @@
 export interface TechnicalIndicatorsModel {
     technicalAnalysis: {
         count: {
-            count: number;
+            buy: number;
             neutral: number;
             sell: number
         };

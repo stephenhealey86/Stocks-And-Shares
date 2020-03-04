@@ -7,7 +7,7 @@ import { CandleResolution } from 'src/app/models/candle-resolution.enum';
 import { FinnhubQuoteService } from 'src/app/services/finnhub-quote.service';
 import { MetricModel } from 'src/app/models/metric-model';
 import { MetricType } from 'src/app/models/metric-type.enum';
-import { ChartModel } from 'src/app/models/chart-model';
+import { LineChartModel } from 'src/app/models/line-chart-model';
 import { TechnicalIndicatorsModel } from 'src/app/models/technical-indicators-model';
 
 @Component({
@@ -27,7 +27,7 @@ export class QuoteComponent implements OnInit {
   metric: MetricModel;
   technicalIndicators: TechnicalIndicatorsModel;
   metricsLoading = true;
-  chartData = [] as Array<ChartModel>;
+  lineChartData = [] as Array<LineChartModel>;
   chartYLabel: string;
 
   constructor(private quoteService: FinnhubQuoteService) { }
@@ -85,7 +85,7 @@ export class QuoteComponent implements OnInit {
   private setChartData(): void {
     for (let i = 0; i < this.candleData.c.length; i++) {
       const DATE = new Date(this.candleData.t[i] * 1000);
-      this.chartData.push({
+      this.lineChartData.push({
         // date: DATE,
         date: this.candleData.t[i] * 1000,
         value: this.candleData.c[i]
