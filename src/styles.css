@@ -6,6 +6,11 @@ app-news, app-prices, app-tips {
     flex-grow: 1;
 }
 
+app-headline {
+    display: flex;
+    justify-items: stretch;
+}
+
 @keyframes spin {
     from {
         transform: rotate(0);

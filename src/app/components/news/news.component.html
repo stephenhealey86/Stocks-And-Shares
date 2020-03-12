@@ -3,8 +3,8 @@
   <p class="lead">Up to date news in the world of business</p>
   <hr class="my-4">
   <p>All articles are provided by 3rd party news outlets.</p>
-  <button (click)="viewType = true" *ngIf="!viewType" class="btn btn-primary">Card View</button>
-  <button (click)="viewType = false" *ngIf="viewType" class="btn btn-primary">List View</button>
+  <button (click)="viewType = true" *ngIf="!viewType && !hideBtn" class="btn btn-primary">Card View</button>
+  <button (click)="viewType = false" *ngIf="viewType && !hideBtn" class="btn btn-primary">List View</button>
 </div>
 
 <div *ngIf="news == undefined || news.length == 0" class="loading d-flex align-items-center justify-content-center">

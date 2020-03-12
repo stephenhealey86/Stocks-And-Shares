@@ -13,7 +13,6 @@ export class HeadlineComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

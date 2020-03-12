@@ -10,7 +10,8 @@ import { HeadlineModel } from 'src/app/models/headline-model';
 export class NewsComponent implements OnInit {
 
   news = [] as Array<HeadlineModel>;
-  viewType = false;
+  viewType = true;
+  hideBtn = false;
 
   constructor(private newsService: FinnhubNewsService) { }
 
@@ -21,6 +22,18 @@ export class NewsComponent implements OnInit {
       }, err => {
         console.log(err);
       });
+
+    window.addEventListener('resize', () => {
+      this.detectScreenSize();
+    });
+  }
+
+  detectScreenSize() {
+    this.hideBtn = false;
+    if (window.innerWidth < 550) {
+      this.viewType = true;
+      this.hideBtn = true;
+    }
   }
 
 }
