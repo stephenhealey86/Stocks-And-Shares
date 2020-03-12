@@ -18,11 +18,14 @@ export class D3PieChartComponent implements OnInit, AfterViewInit {
   @Input() data: TechnicalIndicatorsModel;
 
   pieData = [] as Array<PieChartModel>;
+  totalCount: number;
 
   constructor() { }
 
   ngOnInit() {
     this.convertData();
+    this.totalCount = this.data.technicalAnalysis.count.buy + this.data.technicalAnalysis.count.neutral
+                      + this.data.technicalAnalysis.count.sell;
   }
 
   ngAfterViewInit(): void {
@@ -56,13 +59,18 @@ export class D3PieChartComponent implements OnInit, AfterViewInit {
     const element = svg.node() as SVGAElement;
 
     const width = element.getBoundingClientRect().width;
-    const height = element.getBoundingClientRect().height;
+    const height = width;
 
     const colourScale = d3.scaleOrdinal<string>()
                           .domain(data.map(d => d.name))
-                          .range(d3.schemeCategory10);
+                          .range(['Green', 'Blue', 'Red']);
+
+    // Clear SVG
+    svg.selectAll('*')
+        .remove();
 
     svg
+        .attr('height', width)
         .append('g')
         .attr('transform', `translate(${width / 2}, ${height / 2})`)
         .classed('pieChart', true);
@@ -75,7 +83,7 @@ export class D3PieChartComponent implements OnInit, AfterViewInit {
                     .outerRadius(height / 2 - 10)
                     .innerRadius(height / 4);
 
-    const temp = d3.select('.pieChart')
+    d3.select('.pieChart')
         .selectAll('.arc')
         .data(arcs)
         .enter()

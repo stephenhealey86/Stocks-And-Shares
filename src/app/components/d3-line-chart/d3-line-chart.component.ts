@@ -36,7 +36,7 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
     const element = svg.node() as SVGAElement;
 
     const width = element.getBoundingClientRect().width;
-    const height = element.getBoundingClientRect().height;
+    const height = width / 3 * 2;
     const margin = { top: 30, right: 30, bottom: 40, left: 30 };
 
     const yScale = d3.scaleLinear()

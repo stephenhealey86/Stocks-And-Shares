@@ -33,7 +33,7 @@
   </div>
 </nav>
 
-<div *ngIf="symbol === undefined" class="jumbotron m-5">
+<div *ngIf="exchanges && exchanges.length > 0 && symbol === undefined" class="jumbotron m-5">
   <h1 class="display-4">Stocks & Shares Prices</h1>
   <p class="lead">Up to date live prices and historic prices, as well as company metrics</p>
   <hr class="my-4">

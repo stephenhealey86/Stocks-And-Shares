@@ -95,6 +95,7 @@ export class PricesComponent implements OnInit {
   }
 
   public getQuote(symbol: SymbolModel): void {
+    this.quote = undefined;
     this.symbol = symbol;
     this.searchResults = [];
     this.queryField.setValue('');
