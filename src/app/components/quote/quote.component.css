@@ -13,3 +13,12 @@ tab {
     overflow-y: auto;
     padding: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    th, td {
+        font-size: 3vw;
+    }
+    tabset > ul > li > a > span {
+        font-size: 3vw;
+    }
+}

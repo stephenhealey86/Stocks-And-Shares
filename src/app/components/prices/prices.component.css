@@ -18,4 +18,13 @@
 
 input[type="search"]::-webkit-search-cancel-button {
     display: none;
-  }
+}
+
+@media screen and (max-width: 600px) {
+    button.dropdown-item {
+        font-size: 3vw !important;
+    }
+    div.navbar-collapse {
+        max-width: 100%;
+    }
+}

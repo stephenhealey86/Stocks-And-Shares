@@ -19,3 +19,18 @@ app-headline {
         transform: rotate(360deg);
     }
 }
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 6vw !important;
+    }
+    h3 {
+        font-size: 5vw !important;
+    }
+    h4 {
+        font-size: 4vw !important;
+    }
+    p {
+        font-size: 4vw !important;
+    }
+}
