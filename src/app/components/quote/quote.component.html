@@ -34,21 +34,21 @@
 </div>
 
 <div class="d-flex justify-content-around flex-wrap">
-  <div class="d-flex flex-column ml-1">
+  <div class="d-flex ml-1" [ngClass]="{'flex-column': showMetrics, 'flex-grow-1 justify-content-around': !showMetrics}">
   <!-- Chart -->
-    <div class="m-3" *ngIf="candleData !== undefined">
+    <div class="m-3" *ngIf="candleData !== undefined" [ngClass]="{'flex-grow-1': !showMetrics}">
       <h4 class="text-info">Chart</h4>
       <app-d3-line-chart [data]="lineChartData" [yLabel]="chartYLabel"></app-d3-line-chart>
     </div>
     <!-- Technical Analysis -->
-    <div class="m-3" *ngIf="technicalIndicators !== undefined">
+    <div class="m-3" *ngIf="technicalIndicators !== undefined" [ngClass]="{'flex-grow-2': !showMetrics}">
       <h4 class="text-info">Technical Analysis</h4>
       <app-d3-pie-chart [data]="technicalIndicators"></app-d3-pie-chart>
     </div>
   </div>
   
   <!-- Metrics -->
-  <div *ngIf="metric !== undefined && metric.symbol.length > 0" class="m-3" id="metrics">
+  <div *ngIf="showMetrics" class="m-3" id="metrics">
     <h4 class="text-info">Metrics</h4>
     <tabset #metricTabs>
       <tab heading="Margin" (selectTab)="getMetrics('margin')">

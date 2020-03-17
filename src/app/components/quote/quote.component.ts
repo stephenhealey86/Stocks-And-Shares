@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuoteModel } from 'src/app/models/quote-model';
 import { ExchangeModel } from 'src/app/models/exchange-model';
 import { SymbolModel } from 'src/app/models/symbol-model';
@@ -17,6 +17,10 @@ import { TechnicalIndicatorsModel } from 'src/app/models/technical-indicators-mo
 })
 export class QuoteComponent implements OnInit {
 
+
+  get showMetrics(): boolean {
+    return this.metric !== undefined && this.metric.symbol.length > 0;
+  }
   @Input() quote: QuoteModel;
   @Input() symbol: SymbolModel;
   @Input() exchange: ExchangeModel;
