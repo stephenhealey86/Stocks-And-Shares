@@ -33,6 +33,7 @@ export class QuoteComponent implements OnInit {
   metricsLoading = true;
   lineChartData = [] as Array<LineChartModel>;
   chartYLabel: string;
+  metricTypeEnum = MetricType;
 
   constructor(private quoteService: FinnhubQuoteService) { }
 

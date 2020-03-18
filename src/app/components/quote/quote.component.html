@@ -51,7 +51,7 @@
   <div *ngIf="showMetrics" class="m-3" id="metrics">
     <h4 class="text-info">Metrics</h4>
     <tabset #metricTabs>
-      <tab heading="Margin" (selectTab)="getMetrics('margin')">
+      <tab heading="Margin" (selectTab)="getMetrics(metricTypeEnum.margin)">
         <div *ngIf="metricsLoading" class="loading d-flex align-items-center justify-content-center">
           <i class="fas fa-spinner text-primary m-5"></i>
         </div>
@@ -64,7 +64,7 @@
           </tbody>
         </table>
       </tab>
-      <tab heading="Valuation" (selectTab)="getMetrics('valuation')">
+      <tab heading="Valuation" (selectTab)="getMetrics(metricTypeEnum.valuation)">
         <div *ngIf="metricsLoading" class="loading d-flex align-items-center justify-content-center h-100">
           <i class="fas fa-spinner text-primary m-5"></i>
         </div>
@@ -77,7 +77,7 @@
           </tbody>
         </table>
       </tab>
-      <tab heading="Price" (selectTab)="getMetrics('price')">
+      <tab heading="Price" (selectTab)="getMetrics(metricTypeEnum.price)">
         <div *ngIf="metricsLoading" class="loading d-flex align-items-center justify-content-center h-100">
           <i class="fas fa-spinner text-primary m-5"></i>
         </div>
