@@ -7,5 +7,11 @@
 
 #banner {
     border-radius: 25px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.75);
+}
+
+@media screen and (max-width: 600px) {
+    #banner {
+        padding: 1.5rem !important;
+    }
 }
