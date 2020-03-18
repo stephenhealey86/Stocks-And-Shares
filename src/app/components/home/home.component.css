@@ -13,5 +13,6 @@
 @media screen and (max-width: 600px) {
     #banner {
         padding: 1.5rem !important;
+        margin: 2rem !important;
     }
 }
