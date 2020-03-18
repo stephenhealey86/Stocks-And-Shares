@@ -27,7 +27,9 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
       this.createChart();
     });
 
-    this.createChart();
+    setTimeout(() => {
+      this.createChart();
+    }, 500);
   }
 
   private createChart(): void {
@@ -59,6 +61,11 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
                     .x(d => xScale(d.date))
                     .y(d => yScale(d.value));
 
+    const area = d3.area<any>()
+                    .x(d => xScale(d.date))
+                    .y0(yScale(0))
+                    .y1(d => yScale(d.value));
+
     // Clear SVG
     svg.selectAll('*')
         .remove();
@@ -73,6 +80,7 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
     svg.append('g')
         .attr('transform', `translate(${margin.left}, 0)`)
         .call(yAxis);
+
     // Draw line
     svg
       .attr('width', width)

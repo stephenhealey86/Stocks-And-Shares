@@ -26,6 +26,8 @@ export class NewsComponent implements OnInit {
     window.addEventListener('resize', () => {
       this.detectScreenSize();
     });
+
+    this.detectScreenSize();
   }
 
   detectScreenSize() {

@@ -18,6 +18,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FinnhubQuoteService } from './services/finnhub-quote.service';
 import { D3LineChartComponent } from './components/d3-line-chart/d3-line-chart.component';
 import { D3PieChartComponent } from './components/d3-pie-chart/d3-pie-chart.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { D3PieChartComponent } from './components/d3-pie-chart/d3-pie-chart.comp
     HeadlineComponent,
     D3LineChartComponent,
     D3PieChartComponent,
-    QuoteComponent
+    QuoteComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

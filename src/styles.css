@@ -2,7 +2,7 @@ html, body {
     height: 100%;
 }
 
-app-news, app-prices, app-tips {
+app-news, app-prices, app-tips, app-home {
     flex-grow: 1;
 }
 
