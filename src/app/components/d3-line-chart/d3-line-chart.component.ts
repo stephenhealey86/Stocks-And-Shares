@@ -16,9 +16,7 @@ export class D3LineChartComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
-  ngOnInit() {
-    console.log('Test init');
-  }
+  ngOnInit() {}
 
   ngAfterViewInit(): void {
     if (!this.data) { return; }
