@@ -10,6 +10,13 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    window.addEventListener('resize', () => {
+      this.resizeBanner();
+    });
+  }
+
+  private resizeBanner(): void {
+    
   }
 
 }

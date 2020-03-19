@@ -6,6 +6,11 @@ app-news, app-prices, app-tips, app-home {
     flex-grow: 1;
 }
 
+app-home {
+    display: flex;
+    align-items: stretch;
+}
+
 app-headline {
     display: flex;
     justify-items: stretch;
