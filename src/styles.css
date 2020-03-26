@@ -2,8 +2,22 @@ html, body {
     height: 100%;
 }
 
-app-news, app-prices, app-tips, app-home {
+app-news, app-prices, app-tips, app-home, app-quote {
     flex-grow: 1;
+}
+
+app-quote {
+    height: 10px;
+    overflow-y: auto;
+}
+
+app-prices {
+    display: flex;
+    flex-direction: column;
+}
+
+app-news {
+    overflow-y: auto;
 }
 
 app-home {
