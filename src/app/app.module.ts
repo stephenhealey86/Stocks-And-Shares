@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,7 @@ import { FinnhubQuoteService } from './services/finnhub-quote.service';
 import { D3LineChartComponent } from './components/d3-line-chart/d3-line-chart.component';
 import { D3PieChartComponent } from './components/d3-pie-chart/d3-pie-chart.component';
 import { HomeComponent } from './components/home/home.component';
+import { GlobalErrorHandlerService } from './services/GlobalErrorHandler.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,10 @@ import { HomeComponent } from './components/home/home.component';
     TabsModule.forRoot()
   ],
   providers: [
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandlerService
+    },
     FinnhubNewsService,
     FinnhubPricesService,
     FinnhubQuoteService
